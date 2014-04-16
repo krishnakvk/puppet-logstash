@@ -28,7 +28,7 @@ RSpec.configure do |c|
       if !host.is_pe?
         on host, puppet('module','install','puppetlabs-stdlib', '-v 3.2.0'), { :acceptable_exit_codes => [0,1] }
       end
-      on host, puppet('module','install','ispavailability-file_concat'), { :acceptable_exit_codes => [0,1] }
+      on host, puppet('module','install','puppetlabs-concat'), { :acceptable_exit_codes => [0,1] }
       if fact('osfamily') == 'Debian'
         on host, puppet('module','install','puppetlabs-apt'), { :acceptable_exit_codes => [0,1] }
       end
