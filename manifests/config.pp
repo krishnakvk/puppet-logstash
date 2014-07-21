@@ -53,7 +53,7 @@ class logstash::config {
     }
 
     concat { "${logstash::configdir}/conf.d/logstash.conf":
-      ensure  => 'present',
+      # ensure  => 'present',
       owner   => $logstash::logstash_user,
       group   => $logstash::logstash_group,
       mode    => '0644',

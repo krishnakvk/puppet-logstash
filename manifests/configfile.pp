@@ -59,7 +59,7 @@ define logstash::configfile(
     content => $config_content,
     source  => $source,
     order   => $order,
-    before  => [ concat["${logstash::configdir}/conf.d/logstash.conf"] ]
+    # before  => [ concat["${logstash::configdir}/conf.d/logstash.conf"] ]
   }
 
 }
