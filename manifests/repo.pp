@@ -54,6 +54,15 @@ class logstash::repo {
         gpgkey   => 'http://packages.elasticsearch.org/GPG-KEY-elasticsearch',
         enabled  => 1,
       }
+
+      yumrepo { 'logstash-forwarder':
+        descr    => 'logstash-forwarder Centos Repo',
+        baseurl  => "http://packages.elasticsearch.org/logstashforwarder/centos",
+        gpgcheck => 1,
+        gpgkey   => 'http://packages.elasticsearch.org/GPG-KEY-elasticsearch',
+        enabled  => 1,
+      }
+
     }
     'Suse' : {
       case $::operatingsystem {

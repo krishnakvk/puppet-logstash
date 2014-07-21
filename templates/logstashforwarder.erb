@@ -1,0 +1,32 @@
+{
+  "network": {
+    "servers": [ "<%= logstash_host %>:<%= logstash_port %>" ],
+
+    <% if @use_ssl -%>
+    "ssl certificate": "./logstash-forwarder.crt",
+    "ssl key": "./logstash-forwarder.key",
+    "ssl ca": "./logstash-forwarder.crt",
+    <% end -%>
+
+    "timeout": 15
+  },
+
+  "files": [
+    {
+      "paths": [ 
+        "/var/log/messages",
+        "/var/log/*.log"
+      ],
+
+      "fields": { "type": "syslog" }
+    }, {
+      "paths": [ "-" ],
+      "fields": { "type": "stdin" }
+    }, {
+      "paths": [
+        "/var/log/httpd/httpd-*.log"
+      ],
+      "fields": { "type": "apache" }
+    }
+  ]
+}
